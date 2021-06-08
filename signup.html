@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Signup</title>
     <style>
         .cls1 {
             float: right;
@@ -20,15 +20,55 @@
             margin: auto;
             padding: 5px;
         }
+        #abc1 {
+            width: 40%;
+            height: 400px;
+            margin: 20px auto;
+            background-color: aqua;
+        }
+        h1{
+            text-align: center;
+            padding: 0px;
+        }
+        label{
+            display: block;
+            margin-top: 10px;
+        }
+        #frm {
+            margin-left: 130px;
+        }
+        .btn1 {
+            width:100px;
+            height: 30px;
+            background-color: black;
+            color: white;
+            margin-left: 200px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
 <body>
     <div id="abc">
         <button class="cls1">Signup</button>
-        <button class="cls1">Login</button>
-        <button class="cls1">Home</button>
+        <button class="cls1" onclick="login()">Login</button>
+        <button class="cls1" onclick="home()">Home</button>
+    </div>
+    <div id="abc1">
+        <h1>Signup</h1>
+        <form id="frm">
+            <label for="inp1">Name</label>
+            <input id="inp1", type="text" name="name">
+            <label for="inp2">Contact Number</label>
+            <input id="inp2", type="number" name="contact">
+            <label for = "inp3">Email</label>
+            <input id="inp3", type="email" name="email">
+            <label id="inp4">Password</label>
+            <input id="inp4", type="password" name="password">
+        </form>
+        <button class="btn1" onclick="signup(event)">Signup</button>
     </div>
 </body>
 
 </html>
+<script src="signup.js"></script>
