@@ -21,57 +21,57 @@ let movies = [
         name: 'wanted',
         releaseDate: '18th September 2019',
         url: 'https://i.pinimg.com/originals/1d/55/ce/1d55cee09d01b1a2740cf3ccf1c77755.jpg',
-        imdbRating: '6.6'
+        imdbRating: 6.6
     },
 
     {
         name: 'Holiday',
         releaseDate: '6th June 2014',
         url: 'https://i.ytimg.com/vi/7eXyzOlWZHQ/maxresdefault.jpg',
-        imdbRating: '6.9'
+        imdbRating: 6.9
     },
     {
         name: '3 Idiots',
         releaseDate: '25th december 2009',
         url: 'https://images.cinemaexpress.com/uploads/user/imagelibrary/2020/5/1/original/3_Idiots.PNG',
-        imdbRating: '8.2'
+        imdbRating: 8.2
     },
     {
         name: 'Toilet',
         releaseDate: '25th october 2016',
         url: 'https://i.ytimg.com/vi/ym4EJQ7XORk/maxresdefault.jpg',
-        imdbRating: '7.9'
+        imdbRating: 7.9
     },
     {
         name: 'Munna bhai MBBS',
         releaseDate: '12th June 2006',
         url: 'https://magazine.xpert.tv/wp-content/uploads/2020/07/mbbs.jpg',
-        imdbRating: '7.8'
+        imdbRating: 7.8
     },
 
     {
         name: 'Radhe',
         releaseDate: '6th May 2021',
         url: 'https://imgk.timesnownews.com/media/radhe.jpg',
-        imdbRating: '5.3'
+        imdbRating: 5.3
     },
     {
         name: 'Piku',
         releaseDate: '25th december 2015',
         url: 'https://i.ytimg.com/vi/oeiKUlUUNQ8/maxresdefault.jpg',
-        imdbRating: '8.1'
+        imdbRating: 8.1
     },
     {
         name: 'Pink',
         releaseDate: '12th june 2018',
         url: 'https://i.ytimg.com/vi/ei5rDWrAXFQ/maxresdefault.jpg',
-        imdbRating: '7.9'
+        imdbRating: 7.9
     },
     {
         name: 'Cocktail',
         releaseDate: '6th June 2006',
         url: 'https://m.media-amazon.com/images/M/MV5BMTU3ZmE4ZjQtMTdjMy00OTg1LWFmNmQtY2E5MzVkNTE5ZDQwXkEyXkFqcGdeQXVyNjkwOTg4MTA@._V1_.jpg',
-        imdbRating: '6.2'
+        imdbRating: 6.2
     },
 ]
 localStorage.setItem('movies', JSON.stringify(movies));
@@ -92,4 +92,59 @@ for (let ele in arr1) {
     image.src = arr1[ele].url;
     image.setAttribute('id','im1')
     tempDiv.appendChild(image);
+}
+let div2 = document.createElement('div');
+main.insertBefore(div2, mainDiv);
+let btn1 = document.createElement('button');
+let btn2 = document.createElement('button');
+btn1.innerHTML = 'Low to High Rating';
+btn2.innerHTML = 'High to Low Rating';
+btn1.setAttribute('class', 'btn1')
+
+
+div2.append(btn1,btn2)
+
+
+btn1.onclick = function () {
+    mainDiv.innerHTML = null;
+    let arr1 = JSON.parse(localStorage.getItem('movies'));
+    arr1 = arr1.sort(function (a, b) {
+        return a.imdbRating - b.imdbRating;
+    })
+    
+    for (let ele in arr1) {
+    let tempDiv = document.createElement('div');
+    tempDiv.setAttribute('class', 'div2');
+    mainDiv.appendChild(tempDiv);
+
+    let para = document.createElement('p');
+    para.innerHTML = `Name: ${arr1[ele].name}<br> Release Date: ${arr1[ele].releaseDate} <br> ImdbRating: ${arr1[ele].imdbRating}`
+    tempDiv.appendChild(para);
+    let image = document.createElement('img');
+    image.src = arr1[ele].url;
+    image.setAttribute('id','im1')
+    tempDiv.appendChild(image);
+}
+}
+
+btn2.onclick = function () {
+    mainDiv.innerHTML = null;
+    let arr1 = JSON.parse(localStorage.getItem('movies'));
+    arr1 = arr1.sort(function (a, b) {
+        return b.imdbRating - a.imdbRating;
+    })
+    
+    for (let ele in arr1) {
+    let tempDiv = document.createElement('div');
+    tempDiv.setAttribute('class', 'div2');
+    mainDiv.appendChild(tempDiv);
+
+    let para = document.createElement('p');
+    para.innerHTML = `Name: ${arr1[ele].name}<br> Release Date: ${arr1[ele].releaseDate} <br> ImdbRating: ${arr1[ele].imdbRating}`
+    tempDiv.appendChild(para);
+    let image = document.createElement('img');
+    image.src = arr1[ele].url;
+    image.setAttribute('id','im1')
+    tempDiv.appendChild(image);
+}
 }
